@@ -7,39 +7,38 @@ import { app } from '../app';
 import Team from '../database/models/teamModel';
 
 import { Response } from 'superagent';
+import { teamById, teamsSqlResponse } from './mocks/teamMock';
 
 chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
+describe('Testes de teams', () => {
+  afterEach(sinon.restore);
+  it('Se retorna um array com todos os times', async () => {
+    sinon.stub(Team, 'findAll').resolves(teamsSqlResponse as Team[])
+    const response = await chai.request(app).get('/teams')
+    expect(response.status).to.be.eq(200);
+    expect(response.body).to.be.deep.eq(teamsSqlResponse);
 
-  // let chaiHttpResponse: Response;
+  });
 
-  // before(async () => {
-  //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
-  // });
+  it('Se retorna um time dado o seu id', async () => {
+    sinon.stub(Team, 'findByPk').resolves(teamById as Team)
+    const response = await chai.request(app).get('/teams/3')
+    expect(response.status).to.be.eq(200);
+    expect(response.body).to.be.deep.eq(teamById);
 
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
+  });
 
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
+  it('Se retorna um erro e status 404 caso não encontre o time por id', async () => {
+    sinon.stub(Team, 'findByPk').resolves(null)
+    const response = await chai.request(app).get('/teams/999')
+    expect(response.status).to.be.eq(404);
 
-  //   expect(...)
-  // });
+  });
 
   it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
+    expect(false).to.be.eq(false);
   });
 });
