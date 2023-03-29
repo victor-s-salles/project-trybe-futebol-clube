@@ -13,8 +13,8 @@ export default class LoginFields {
       return res.status(400).json({ message: 'All fields must be filled' });
     }
 
-    if (!this.validateEmail(email) || password.lenght <= 6) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+    if (!this.validateEmail(email) || password.length < 6) {
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
     next();
   };

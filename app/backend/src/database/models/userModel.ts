@@ -27,7 +27,7 @@ User.init({
     type: STRING,
   },
   role: {
-    allowNull: true,
+    allowNull: false,
     type: STRING,
   },
   email: {
@@ -43,7 +43,6 @@ User.init({
   underscored: true,
   sequelize: db,
   tableName: 'users',
-  // modelName: 'example',
   timestamps: false,
 });
 
