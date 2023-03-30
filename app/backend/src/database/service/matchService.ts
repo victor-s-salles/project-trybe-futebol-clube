@@ -24,4 +24,15 @@ export default class MatchService {
 
     return result;
   };
+
+  finishMatch = async (id: number) => {
+    const updated = await this._model.update({
+      inProgress: false,
+    }, { where: { id } });
+    const isFound = updated[0];
+    if (!isFound) {
+      return false;
+    }
+    return true;
+  };
 }

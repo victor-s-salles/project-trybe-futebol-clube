@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import Token from '../../auth/token';
 import LoginService from '../service/loginService';
 
 export default class LoginController {
@@ -20,16 +19,9 @@ export default class LoginController {
   };
 
   getRole = async (req: Request, res: Response) => {
-    const { authorization } = req.headers;
-    if (!authorization) {
-      return res.status(401).json({ message: 'Token not found' });
-    }
-    const tokenValidate = new Token();
-    try {
-      const user = tokenValidate.authToken(authorization);
-      return res.status(200).json({ role: user.role });
-    } catch (error) {
-      return res.status(401).json({ message: 'Token must be a valid token' });
-    }
+    const { user } = req.body;
+    // MELHORIA: Trocar por função que busca a role no banco de dados,
+    //  para confirmar se não houve auteração da role desde que o token foi gerado
+    return res.status(200).json({ role: user.role });
   };
 }
