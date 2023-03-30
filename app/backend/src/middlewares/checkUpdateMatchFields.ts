@@ -8,9 +8,9 @@ export default class CheckUpdateMatchFields {
       return res.status(400).json({ message: 'All fields must be filled correctly' });
     }
 
-    if (typeof homeTeamGoals !== 'number' || typeof awayTeamGoals !== 'number') {
-      return res.status(401).json({ message: 'Invalid values' });
-    }
+    // if (typeof homeTeamGoals !== 'number' || typeof awayTeamGoals !== 'number') {
+    //   return res.status(404).json({ message: 'Invalid values' });
+    // }
     next();
   };
 }
