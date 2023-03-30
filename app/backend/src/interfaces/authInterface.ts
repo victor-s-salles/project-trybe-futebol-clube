@@ -4,6 +4,10 @@ export interface IJwtPayload {
   username: string;
   role: string,
 }
+
+export interface IUser extends IJwtPayload {
+  password: string
+}
 export interface IAuthToken extends IJwtPayload {
   iat: number;
   exp: number;
