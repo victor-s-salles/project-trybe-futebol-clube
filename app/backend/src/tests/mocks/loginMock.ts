@@ -1,5 +1,4 @@
 import User from "../../database/models/userModel"
-import { IUser } from "../../interfaces/authInterface"
 
 
 const login = {
