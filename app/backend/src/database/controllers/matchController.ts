@@ -24,4 +24,17 @@ export default class MatchController {
     }
     return res.status(200).json({ message: 'Finished' });
   };
+
+  updateMathGoals: RequestHandler = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+
+    const result = await this._service
+      .updateMathGoals(Number(id), homeTeamGoals, awayTeamGoals);
+    if (!result) {
+      const match = await this._service.getById(Number(id));
+      if (!match) { return res.status(404).json({ message: 'Match not found' }); }
+    }
+    return res.status(200).json({ message: 'Updated' });
+  };
 }
