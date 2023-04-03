@@ -6,7 +6,7 @@ export default class LeaderboardService {
   private getResultLeaderboard = async (query:string):Promise<IFullLeaderbordResult[]> => {
     const [result] = await sequelize.query(query) as ILeaderbordSqlResult[][];
     const fullLeaderbord = result.map((team) => {
-      const efficiencyPercentage = ((team.totalPoints / (team.totalGames * 3))).toFixed(2);
+      const efficiencyPercentage = ((team.totalPoints / (team.totalGames * 3)) * 100).toFixed(2);
       return { ...team, efficiency: efficiencyPercentage };
     });
     return fullLeaderbord;
