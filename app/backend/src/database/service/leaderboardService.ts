@@ -1,6 +1,7 @@
 import sequelize from '../models';
 import { IFullLeaderbordResult, ILeaderbordSqlResult } from '../../interfaces/leaderboardInterface';
-import { awayLeaderBoardQuery, homeLeaderBoardQuery } from '../../sequelizeMySqlQuerys/leaderboard';
+import { allLeaderBoardQuery, awayLeaderBoardQuery,
+  homeLeaderBoardQuery } from '../../sequelizeMySqlQuerys/leaderboard';
 
 export default class LeaderboardService {
   private getResultLeaderboard = async (query:string):Promise<IFullLeaderbordResult[]> => {
@@ -17,4 +18,7 @@ export default class LeaderboardService {
 
   public getAwayTeams = async (): Promise<IFullLeaderbordResult[]> => this
     .getResultLeaderboard(awayLeaderBoardQuery);
+
+  public getAllTeams = async (): Promise<IFullLeaderbordResult[]> => this
+    .getResultLeaderboard(allLeaderBoardQuery);
 }

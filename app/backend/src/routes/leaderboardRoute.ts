@@ -9,5 +9,6 @@ const router = express.Router();
 
 router.get('/home', leaderboardController.getHomeTeams);
 router.get('/away', leaderboardController.getAwayTeams);
+router.get('/', leaderboardController.getAllTeams);
 
 export default router;
