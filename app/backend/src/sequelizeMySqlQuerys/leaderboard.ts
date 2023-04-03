@@ -53,8 +53,8 @@ export const allLeaderBoardQuery = `
         THEN mat.away_team_goals ELSE 0 END) AS goalsFavor,
     SUM(CASE WHEN mat.home_team_id = tea.id 
         THEN mat.away_team_goals ELSE 0 END) + 
-    SUM(CASE WHEN mat.away_team_id = tea.id T
-        HEN mat.home_team_goals ELSE 0 END) AS goalsOwn,
+    SUM(CASE WHEN mat.away_team_id = tea.id 
+        THEN mat.home_team_goals ELSE 0 END) AS goalsOwn,
     ((SUM(CASE WHEN mat.home_team_id = tea.id THEN 
         mat.home_team_goals ELSE 0 END) + 
     SUM(CASE WHEN mat.away_team_id = tea.id THEN 
