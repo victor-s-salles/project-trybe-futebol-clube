@@ -14,7 +14,7 @@ export default class Token implements IToken {
     this._jwt = jwt;
     this._secret = process.env.JWT_SECRET || 'VSS20';
     this._options = {
-      expiresIn: '2h',
+      expiresIn: '5h',
       algorithm: 'HS256',
     };
   }
