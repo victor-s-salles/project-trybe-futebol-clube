@@ -6,7 +6,8 @@ import MatchService from '../database/service/matchService';
 export default class NewMatchValidate {
   checkValid = async (req: Request, res: Response, next: NextFunction) => {
     const { homeTeamGoals, awayTeamGoals, homeTeamId, awayTeamId } = req.body;
-    if (!homeTeamGoals || !awayTeamGoals || !homeTeamId || !awayTeamId) {
+    if (homeTeamGoals === undefined || awayTeamGoals === undefined
+      || homeTeamId === undefined || awayTeamId === undefined) {
       return res.status(400)
         .json({ message: 'All fields must be filled' });
     }
