@@ -3,7 +3,6 @@ import LeaderboardService from '../service/leaderboardService';
 
 export default class LeaderboardController {
   _service: LeaderboardService;
-
   constructor(service: LeaderboardService) {
     this._service = service;
   }
