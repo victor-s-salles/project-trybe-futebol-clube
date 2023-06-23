@@ -3,7 +3,7 @@
 # Project Trybe Futebol Clube
 
 ## Descrição
-Este projeto é uma aplicação web desenvolvida completa, em um monorepo, visando simular um sistema de gerenciamento de um clube de futebol, onde podemos: 
+Este projeto é uma aplicação web desenvolvida completa, em um monorepo, visando simular um sistema de gerenciamento de classificação de times de futebol, onde podemos: 
 - Ver a classificação de todos os times e filtrá-los
 - Cadastrar novas partidas
 - Modificar partidas em andamento
